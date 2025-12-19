@@ -1,4 +1,6 @@
 import "../styles/global.scss";
+import "../styles/index.scss";
+import "../styles/game.scss";
 import { Be_Vietnam_Pro } from "next/font/google";
 
 const beVietnamPro = Be_Vietnam_Pro({

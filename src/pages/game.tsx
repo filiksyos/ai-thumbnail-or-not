@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import "../styles/game.scss";
 import Image from "next/image";
 import Link from "next/link";
 
