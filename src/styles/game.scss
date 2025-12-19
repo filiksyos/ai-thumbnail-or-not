@@ -1,0 +1,251 @@
+$smartphones-size: 320px;
+$small-tablets-size: 480px;
+$tablets-size: 768px;
+$laptops-size: 1024px;
+
+.p-game {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+
+	&__thumbnail {
+		position: relative;
+		width: 50%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+
+		&:hover {
+			&.p-game__thumbnail--left .p-game__select-thumb {
+				display: flex;
+				background-color: black;
+				color: white;
+				box-shadow: 10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				cursor: pointer;
+				-webkit-box-shadow: 10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: 10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				z-index: 9;
+			}
+
+			&.p-game__thumbnail--right .p-game__select-thumb {
+				display: flex;
+				background-color: black;
+				color: white;
+				cursor: pointer;
+				box-shadow: -10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				-webkit-box-shadow: -10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: -10px -1px 10px 0px rgba(0, 0, 0, 0.75);
+				z-index: 9;
+			}
+		}
+	}
+
+	&__select-thumb {
+		position: absolute;
+		display: none;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: transparent;
+		background-color: transparent;
+		opacity: 0.6;
+		z-index: 10;
+	}
+
+	&__select-thumb-txt {
+		font-size: 3rem;
+		line-height: 3.25rem;
+		font-weight: 500;
+	}
+
+	&__result {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		z-index: 5;
+	}
+
+	&__result-txt {
+		font-size: 3rem;
+		line-height: 3.25rem;
+		font-weight: 500;
+		color: white;
+
+		&--success {
+			color: #4ade80;
+		}
+
+		&--wrong {
+			color: #ef4444;
+		}
+	}
+
+	&__icon-back {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		stroke: white;
+		z-index: 10;
+		cursor: pointer;
+		transition: transform 0.2s ease;
+
+		&:hover {
+			transform: translateX(-5px);
+		}
+	}
+
+	&__result-img {
+		position: relative;
+		width: 225px;
+		height: 225px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.p-next-round {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba($color: #000000, $alpha: 0.85);
+		color: white;
+
+		&__score-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		&__title {
+			font-size: 2rem;
+		}
+
+		&__subtitle {
+			font-size: 1rem;
+			font-style: italic;
+		}
+
+		&__score {
+			font-size: 2.5rem;
+		}
+
+		&__historical-score-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		&__video-container {
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+			iframe {
+				display: block;
+			}
+		}
+
+		&__button-container {
+			display: flex;
+			flex-direction: row;
+			gap: 5rem;
+		}
+
+		&__button {
+			border-radius: 1.5rem;
+			text-transform: none;
+			font-family: inherit;
+			font-size: 1rem;
+			padding: 0.5rem 2rem;
+			transition: all 0.3s ease;
+
+			&:hover {
+				cursor: pointer;
+				transform: translateY(-2px);
+			}
+
+			&--next {
+				color: white;
+				background-color: #4477ce;
+				border: none;
+				&:hover {
+					background-color: darken(#4477ce, 5%);
+				}
+			}
+			&--exit {
+				border: 2px solid #d74d4d;
+				color: #d74d4d;
+				background-color: transparent;
+				&:hover {
+					border-color: darken($color: #d74d4d, $amount: 10%);
+					background-color: rgba(#d74d4d, 0.1);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $tablets-size) {
+	.p-game {
+		flex-direction: column;
+
+		&__thumbnail {
+			width: 100%;
+			height: 50%;
+		}
+
+		&__select-thumb {
+			display: none !important;
+		}
+
+		&__select-thumb-txt {
+			font-size: 2rem;
+			line-height: 2.25rem;
+			font-weight: 500;
+		}
+
+		&__result-img {
+			position: relative;
+			width: 144px;
+			height: 144px;
+		}
+
+		&__result-txt {
+			font-size: 2rem;
+			line-height: 2.25rem;
+		}
+
+		.p-next-round {
+			&__video-container {
+				iframe {
+					width: 90vw;
+					height: calc(90vw * 9 / 16);
+				}
+			}
+
+			&__button-container {
+				gap: 2rem;
+			}
+		}
+	}
+}
